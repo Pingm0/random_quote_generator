@@ -66,8 +66,34 @@ function printQuote  () {
 
 
     document.getElementById('quote-box').innerHTML = htmString;
+    //document.body.style.backgroundColor=`rgb(${randomColor ()},${randomColor ()},${randomColor ()})`
+    
+    const rgbColors = randomColor()
+    document.body.style.backgroundColor=`rgb(${rgbColors[0]},${rgbColors[1]},${rgbColors[2]})`
+    console.log(rgbColors)
+
+  
 
 }
+
+// function randomColor () {
+//     return Math.floor(Math.random() * 255)
+// }
+
+function randomColor () {
+  let rgb = []
+  for (let i = 0 ; i < 3 ; i++){
+      let randomColor = Math.floor(Math.random() * 255)
+      rgb.push(randomColor)
+  }
+
+  return rgb
+}
+
+
+
+
+
 
 
 
