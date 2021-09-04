@@ -51,7 +51,9 @@ function getRandomQuote() {
     
   }
   else {
+  currentQuote = randomNumber
    return quotes[randomNumber];
+   
   }
 }
 
