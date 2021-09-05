@@ -43,7 +43,6 @@ function getRandomQuote() {
    let randomNumber = Math.floor(Math.random() * quotes.length);
     
   if (currentQuote === randomNumber) {
-    alert("match")
     randomNumber = Math.floor(Math.random() * quotes.length);
     //here we set the random nuber to currentQoute so next time we run the  getRandomQuote function we refrencit in the if statment
     currentQuote = randomNumber
@@ -68,7 +67,7 @@ function getRandomQuote() {
 function printQuote  () {
   // we save the returned value from the getRandom Quote into random Quote
   const randomQuote = getRandomQuote()
-  //console.log(randomQuote)
+  
 
   // generating the html string to display into the webpage
   let htmString =
@@ -98,7 +97,7 @@ function printQuote  () {
     const rgbColors = randomColor()
     // here we set  the rgb colo accssing the array values 
     document.body.style.backgroundColor=`rgb(${rgbColors[0]},${rgbColors[1]},${rgbColors[2]})`
-    console.log(rgbColors)
+    
 
    //in this step we clear the refresh time of the user click the button and reset the 10 seconds interval
   clearInterval(myTimer)
