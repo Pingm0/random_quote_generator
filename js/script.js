@@ -11,7 +11,7 @@ project 1 - A Random Quote Generator
  * `quotes` array 
 ***/
 // Array of objects 
-const quotes = [
+let quotes = [
   {"quote":"My quote","source":"Me","citation":"myDesk","year":2021,"tag":"myTag"},
   {"quote":"We become what we think about","source":" Earl Nightingale"},
   {"quote":"Success is not final, failure is not fatal: it is the courage to continue that counts.","source":"Winston Churchill",},
@@ -30,7 +30,7 @@ const quotes = [
 
 /*this variable is holding the random number used in the previos 
 function run forgetRandomQuote()  */
-let currentQuote = 0  ;
+//let currentQuote = 0  ;
 
 /***
  * `getRandomQuote` function
@@ -38,24 +38,50 @@ let currentQuote = 0  ;
  * randome number from last time so we get a new Quote guaranteed 
 ***/
 
+// function getRandomQuote() {
+
+//    let randomNumber = Math.floor(Math.random() * quotes.length);
+    
+//   if (currentQuote === randomNumber) {
+//     alert("match")
+//     randomNumber = Math.floor(Math.random() * quotes.length);
+//     //here we set the random nuber to currentQoute so next time we run the  getRandomQuote function we refrencit in the if statment
+//     currentQuote = randomNumber
+//     return  quotes[randomNumber];
+    
+//   }
+//   else {
+//   currentQuote = randomNumber
+//    return quotes[randomNumber];
+   
+//   }
+// }
+
+let holder = []
+
 function getRandomQuote() {
 
-   let randomNumber = Math.floor(Math.random() * quotes.length);
-    
-  if (currentQuote === randomNumber) {
-    alert("match")
-    randomNumber = Math.floor(Math.random() * quotes.length);
-    //here we set the random nuber to currentQoute so next time we run the  getRandomQuote function we refrencit in the if statment
-    currentQuote = randomNumber
-    return  quotes[randomNumber];
-    
+  let randomNumber = Math.floor(Math.random() * quotes.length);
+  let currentQ = quotes[randomNumber];
+  let displayedQuotes ;
+  displayedQuotes = quotes.splice(randomNumber,1);
+  displayedQuotes = displayedQuotes.pop()
+  holder.push(displayedQuotes)
+  
+  
+  if(quotes.length == 0){
+    console.log("inside the if statment")
+    quotes = holder
+    holder = []
   }
-  else {
-  currentQuote = randomNumber
-   return quotes[randomNumber];
-   
-  }
-}
+
+  console.log(holder.length)
+  console.log(quotes.length)
+  return currentQ;
+  
+ }
+
+ 
 
 
 
@@ -68,7 +94,6 @@ function getRandomQuote() {
 function printQuote  () {
   // we save the returned value from the getRandom Quote into random Quote
   const randomQuote = getRandomQuote()
-  //console.log(randomQuote)
 
   // generating the html string to display into the webpage
   let htmString =
@@ -98,7 +123,7 @@ function printQuote  () {
     const rgbColors = randomColor()
     // here we set  the rgb colo accssing the array values 
     document.body.style.backgroundColor=`rgb(${rgbColors[0]},${rgbColors[1]},${rgbColors[2]})`
-    console.log(rgbColors)
+  
 
    //in this step we clear the refresh time of the user click the button and reset the 10 seconds interval
   clearInterval(myTimer)
